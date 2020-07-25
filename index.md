@@ -2,12 +2,15 @@
 
 Twitter users choose the users they follow and the topics they tweet about carefully. This has led to a growing interest among Data Scientist and business owners trying to identify and categorize users based on their interests so that they may target them with products or issues of interest to them. This is an area that has attracted academicians and many [academic papers](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0210689) have been published outlining different strategies to use in discovering twitter communities. Many of such papers are overly complex and fail to meet the needs of beginner [Data Scientists](https://www.edureka.co/blog/what-is-data-science/#datascientist). This project seeks to present a very basic and simple approach to identifying twitter communities using [hashtags](https://www.takeflyte.com/blog/hashtags-explained) in users' tweets.
 
-[Hashtags](https://www.takeflyte.com/blog/hashtags-explained) are used in social networks to identify the topic of a social media post. Social media campaigners or marketters use them a lot in their post to draw users attention to their campaigns or products. Now that you know why we are here, let's get started!
+[Hashtags](https://www.takeflyte.com/blog/hashtags-explained) are used in social networks to identify the topic of a social media post. Social media campaigners or marketters use them a lot in their post to draw users attention to their campaigns or products.
 
-_You need to have python 3 installed any other platform that will allow you to install relevant python packages for this tutorial. You will also need to have a Twitter Developer Account so that you can obtain the Twitter API keys to use Twitter API endpoints some knowledge in writing python codes and working with json files is a plus._
+_You need to have python 3 installed any other platform that will allow you to write python code and install relevant python packages for this tutorial. You will also need to have a Twitter Developer Account so that you can obtain the Twitter API credentials to use Twitter API. Some knowledge in writing python codes and working with json files is a plus!_
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Step 1: [Install Anaconda](https://www.anaconda.com/products/individual)
+Step 2: [Get your Twitter Developer Account](https://developer.twitter.com/en)
+Step 3: [Take a review on json format](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
 
+Now that you are set, lets get started!
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
