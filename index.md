@@ -1,7 +1,6 @@
-## Welcome to GitHub Pages
+## Identifying Twitter communities: Asimple approach
 
-You can use the [editor on GitHub](https://github.com/Ayebilla/twittercommunities.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
+Twitter users choose the users they follow and the topics they tweet about carefully. This has led to a growing interest among Data Scientist and business owners trying to identify and categorize users based on their interests so that they may target them with products or issues of interest to them. This is an area that has attracted academicians and many [academic papers][https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0210689] have been published outlining different strategies to use in discovering twitter communities. Many of such papers are overly complex and fail to speak to the needs of beginners. This paper seeks to present a very basic and simple approach to identifying twitter communities using hashtags in users' tweets.
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
@@ -31,6 +30,8 @@ For more details see [GitHub Flavored Markdown](https://guides.github.com/featur
 ### Jekyll Themes
 
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Ayebilla/twittercommunities.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+
+edit here  [editor on GitHub](https://github.com/Ayebilla/twittercommunities.github.io/edit/master/index.md)
 
 ### Support or Contact
 
