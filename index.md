@@ -12,8 +12,8 @@ Step 3: [Take a review on json format](https://developer.mozilla.org/en-US/docs/
 
 ## Initial steps and importing of relevant libraries.
 Open your python editor of choice ( you can use Jupyter notebook from Anaconda if you installed it) and import the following which we will use.You may add other libraies of your choice if you want to try out different things.
-
-```from tweepy import API
+```
+from tweepy import API
 from tweepy import OAuthHandler
 from tweepy import Cursor
 import json
@@ -51,6 +51,7 @@ Note that it is best practice to store your credentials as environment variables
 ## Getting the users we want to download their tweets to analyze
 To make it interesting, we are going to download tweets of users within a certain geographic location and based on the common hashtags found in their tweets, we can put them into clusters as communities. Start by first identifying geographic boundary you want to identify the communities. You can use your country for example. Go ahead and identify some people in that geographic boundary as seed member. Search their names on Twitter and grab their twitter usernames if they are present on twitter. Drop the '@' symbol, it is not necessary. You can write these names to a csv file to be used late or just keep them in a list within your program. Note that, if there exist such data somewhere, you could just grab it the usernames from there!
 It is important that you get as many users as you can. To get our target number of users, we are going to scrawl through twitter and grab the friends i.e people a user is following who are in the same geographic region. For my case, I used 38 seed users and expanded the total to 1038 by grabbing the friends of all 38 users without duplicates. Think of ways to control duplicates in your user list. I handled this by using a python set to store them as set does not allow duplicates. Here is a function to get the names of the user's friends. 
+
 ```
 # user friends
 usrset = set()
@@ -67,6 +68,7 @@ def userFriends(user = 'RuwaOntheGo'): #if you call the function without a param
                 print("More results available. Sleeping for 1 minute to avoid rate limit..")
                 time.sleep(120)
 ```
+
 You can call this function in a for loop and pass your list of users you want to get their friends. For my case, I want to get the friends of the 38 seed users so I call this for each user in that list of 38. Because this function always adds to a global set called usrset, there will be no duplicates!
 Go ahead and get as many user names as you want for this exercise if you have a powerful machine. You can use [google colab](https://colab.research.google.com/notebooks/intro.ipynb#recent=true) to save your machine some processing power. Once you are done getting the user names, you may want to write it into csv file or some database for persistence. 
 _Hint: segment your input into different list of smaller sizes say, 20 users to avoid delays that may lead to a timed out error. Use different sets to hold the output and you can then unite the sets after you are done to avoid duplicates_
