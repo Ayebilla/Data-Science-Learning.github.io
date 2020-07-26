@@ -27,11 +27,11 @@ from mpl_toolkits.mplot3d import Axes3D
 ## Get your Twitter Developer Account
 In order for us to be able to get user tweets and profiles from Twitter using the Twitter API, we will need a consumer key, consumer secret, an access token and access token secret. We need these because we will need to authenticate the app that we will be using to get tweets from Twitter. Just in case you are new to APIs, don't worry. [API](https://www.mulesoft.com/resources/api/what-is-an-api) stands for Application Programming Interface. Just like the name suggests, reading it from right to left, think of it this way: "You have an Interface where you can tell a Program(you made) to run an Application(Twitter made) to do some specific task for you." Simple, isn't it?
 Before you can get Twitter's programs to run and do something for you, the app you are using to do that must be authenticated. So go ahead and apply for the developer account by following the link provided above if you don't have it already. You need to have a Twitter user account first so go ahead and create one if you don't have one already. I must tell you that getting your developer account approved can take as short as 3 minutes after you have submitted your application or as long as never if you do not do it right. Carefully provide answers to the questions they ask and do not forget to uncheck the boxes that talk about doing something for the government if you don't intend to. By default, those options are ticked so if you leave them as such, Twitter will follow up with emails asking you to answer the same questions you just did. When you get your account approved, login and create an app. Get your credentials and let's take the next step!
+## Connect to Twitter
 
 These two functions will help you connect to Twitter and get data. Thanks to this [YouTube video](https://www.youtube.com/watch?v=CVYazfbbcZ8&list=PLmcBskOCOOFW1SNrz6_yzCEKGvh65wYb9&index=18&pbjreload=101)  tutorial that made those functions for us easily. Fill in the spaces with your api credentials.
 
-
-```# Get user tweets as a json file
+```
 def getTwitterOAuth():
     consumer_key = ''
     consumer_secret = ''
