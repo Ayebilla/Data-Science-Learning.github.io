@@ -49,5 +49,25 @@ def TwitterClient():
 Note that it is best practice to store your credentials as environment variables so you don't expose them to the public. If you need to do that, you will need to import os and sys as well. [This](http://jonathansoma.com/lede/foundations-2019/classes/apis/keeping-api-keys-secret/) may be a good place to look for how to do that.
 
 To make it interesting, we are going to download tweets of users within a certain geographic location and based on the common hashtags found in their tweets, we can put them into clusters as communities. Start by first identifying geographic boundary you want to identify the communities. You can use your country for example. Go ahead and identify some people in that geographic boundary as seed member. Search their names on Twitter and grab their twitter usernames if they are present on twitter. Drop the '@' symbol, it is not necessary. You can write these names to a csv file to be used late or just keep them in a list within your program. Note that, if there exist such data somewhere, you could just grab it the usernames from there!
-It is important that you get as many users as you can. To get our target number of users, we are going to scraw through twitter and grab the friends i.e people a user is following who are in the same geographic region. 
+It is important that you get as many users as you can. To get our target number of users, we are going to scrawl through twitter and grab the friends i.e people a user is following who are in the same geographic region. For my case, I used 38 seed users and expanded the total to 1038 by grabbing the friends of all 38 users without duplicates. Think of ways to control duplicates in your user list. I handled this by using a python set to store them as set does not allow duplicates. Here is a function to get the names of the user's friends. 
+```
+# user friends
+usrset = set()
+
+def userFriends(user = 'RuwaOntheGo'): #if you call the function without a parameter, the default user is 'RuwaOntheGo'
+    client = TwitterClient()
+        for friends in Cursor(client.friends_ids,screen_name=user).pages(max_pages): 
+            for chunk in paginate(friends, 100):
+                users = client.lookup_users(user_ids=chunk)
+                for usr in users:
+                    if usr.location =='your_location':
+                        usrset.add(usr.screen_name) #get the user name of each friend and storing them in a set
+            if len(friends) == 400:
+                print("More results available. Sleeping for 1 minute to avoid rate limit..")
+                time.sleep(120)
+```
+You can call this function in a for loop and pass your list of users you want to get their friends. For my case, I want to get the friends of the 38 seed users so I call this for each user in that list of 38. Because this function always adds to a global set called usrset, there will be no duplicates!
+Go ahead and get as many user names as you want for this exercise if you have a powerful machine. You can use [google colab](https://colab.research.google.com/notebooks/intro.ipynb#recent=true) to save your machine some processing power. Once you are done getting the user names, you may want to write it into csv file or some database for persistence. 
+_Hint: segment your input into different list of smaller sizes say, 20 users to avoid delays that may lead to a timed out error. Use different sets to hold the output and you can then unite the sets after you are done to avoid duplicates_
+
 
