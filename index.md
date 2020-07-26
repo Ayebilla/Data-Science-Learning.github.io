@@ -30,7 +30,7 @@ Before you can get Twitter's programs to run and do something for you, the app y
 These two functions will help you connect to Twitter and get data. Thanks to this [YouTube video](https://www.youtube.com/watch?v=CVYazfbbcZ8&list=PLmcBskOCOOFW1SNrz6_yzCEKGvh65wYb9&index=18&pbjreload=101)  tutorial that made those functions for us easily. Fill in the spaces with your api credentials.
 
 
-```
+```# Get user tweets as a json file
 def getTwitterOAuth():
     consumer_key = ''
     consumer_secret = ''
@@ -52,8 +52,7 @@ Note that it is best practice to store your credentials as environment variables
 To make it interesting, we are going to download tweets of users within a certain geographic location and based on the common hashtags found in their tweets, we can put them into clusters as communities. Start by first identifying geographic boundary you want to identify the communities. You can use your country for example. Go ahead and identify some people in that geographic boundary as seed member. Search their names on Twitter and grab their twitter usernames if they are present on twitter. Drop the '@' symbol, it is not necessary. You can write these names to a csv file to be used late or just keep them in a list within your program. Note that, if there exist such data somewhere, you could just grab it the usernames from there!
 It is important that you get as many users as you can. To get our target number of users, we are going to scrawl through twitter and grab the friends i.e people a user is following who are in the same geographic region. For my case, I used 38 seed users and expanded the total to 1038 by grabbing the friends of all 38 users without duplicates. Think of ways to control duplicates in your user list. I handled this by using a python set to store them as set does not allow duplicates. Here is a function to get the names of the user's friends. 
 
-```
-# user friends
+```# user friends
 usrset = set()
 
 def userFriends(user = 'RuwaOntheGo'): #if you call the function without a parameter, the default user is 'RuwaOntheGo'
@@ -74,5 +73,14 @@ Go ahead and get as many user names as you want for this exercise if you have a 
 _Hint: segment your input into different list of smaller sizes say, 20 users to avoid delays that may lead to a timed out error. Use different sets to hold the output and you can then unite the sets after you are done to avoid duplicates_
 
 ## Downloading the tweets of all the users.
+Now that we have the user names of the users we want, we will go ahead and download their tweets. Tweets will be download as json objects and save in a json file. Eeach line in this file represent a tweet object. Remember this as we will be needing it to be able to get hashtags from the tweets. You can visit the Twitter developers site to learn more about the [structure of a tweet](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json#:~:text=Each%20Tweet%20has%20an%20author,most%20often%20an%20account%20bio.).
+This function will help us download the tweets of a user as a json file
 
-
+```def getUserTweets(user='AvokaAyebilla'):
+    client = TwitterClient()
+    fname = "user_timeline_{}.jsonl".format(user)
+    with open(fname, 'w') as f:
+        for page in Cursor(client.user_timeline, screen_name=user,count=200).pages(2):
+            for status in page:
+                f.write(json.dumps(status._json) + "\n")
+ ```
