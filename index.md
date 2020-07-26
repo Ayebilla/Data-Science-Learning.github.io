@@ -53,7 +53,7 @@ Note that it is best practice to store your credentials as environment variables
 To make it interesting, we are going to download tweets of users within a certain geographic location and based on the common hashtags found in their tweets, we can put them into clusters as communities. Start by first identifying geographic boundary you want to identify the communities. You can use your country for example. Go ahead and identify some people in that geographic boundary as seed member. Search their names on Twitter and grab their twitter usernames if they are present on twitter. Drop the '@' symbol, it is not necessary. You can write these names to a csv file to be used late or just keep them in a list within your program. Note that, if there exist such data somewhere, you could just grab it the usernames from there!
 It is important that you get as many users as you can. To get our target number of users, we are going to scrawl through twitter and grab the friends i.e people a user is following who are in the same geographic region. For my case, I used 38 seed users and expanded the total to 1038 by grabbing the friends of all 38 users without duplicates. Think of ways to control duplicates in your user list. I handled this by using a python set to store them as set does not allow duplicates. Here is a function to get the names of the user's friends. 
 
-```# user friends
+```
 usrset = set()
 
 def userFriends(user = 'RuwaOntheGo'): #if you call the function without a parameter, the default user is 'RuwaOntheGo'
@@ -141,7 +141,6 @@ Just like the other functions, call this function many times to get the hashtag 
 ## Preparing a pandas data frame for your data
 If you called the tags() function above many times, storing the result in one big list, you will end up with a list containing dictionaries whose values are a list! Employ your basic python skills here to manipulate it into a form that you can simply convert it to a pandas data frame. I used these functions below to manipulate mine. Go ahead and do it your way!
 ```
-#prepare a data frame
 def get_dictkeys(listdic):
     return list(listdic.keys())
 
