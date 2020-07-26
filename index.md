@@ -22,6 +22,7 @@ import pandas as pd
 import csv
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+from mpl_toolkits.mplot3d import Axes3D
 ```
 ## Get your Twitter Developer Account
 In order for us to be able to get user tweets and profiles from Twitter using the Twitter API, we will need a consumer key, consumer secret, an access token and access token secret. We need these because we will need to authenticate the app that we will be using to get tweets from Twitter. Just in case you are new to APIs, don't worry. [API](https://www.mulesoft.com/resources/api/what-is-an-api) stands for Application Programming Interface. Just like the name suggests, reading it from right to left, think of it this way: "You have an Interface where you can tell a Program(you made) to run an Application(Twitter made) to do some specific task for you." Simple, isn't it?
@@ -173,3 +174,31 @@ AshesiIX | 0  |     0   |       0   |   0
 askrashida | 0    |  0    |      0   |   0
 Ghanasoccernet | 0 |  0   |      0   |   0
 TransformingGh | 0 |   0   |     29    | 0 
+
+Good job! if you have your data frame ready. Now let's do the last bit of it which is using the K-means to make a cluster of our users. I know you are exhausted already so I will not bore you by explaining what K-means is. You can take a quick read about it [here](https://en.wikipedia.org/wiki/K-means_clustering)
+
+```
+X = dff.iloc[:,1:5]
+kmeans = KMeans(4)
+identified_cluster = kmeans.fit_predict(X)
+identified_cluster
+
+data_wt_clusters = dff.copy()
+data_wt_clusters['clusters'] = identified_cluster
+fig =plt.figure()
+#ax = Axes3D(fig, rect=[0, 0, .95, 1], elev=48, azim=134)
+#ax = fig.add_subplot(111,projection='3d')
+ax = Axes3D(fig, rect=[1, 1, 1, 1], elev=48, azim=200)
+
+x = data_wt_clusters['economy']
+y = data_wt_clusters['social']
+z = data_wt_clusters['culture']
+c = data_wt_clusters['health']
+
+img = ax.scatter(x,y,z, c=c, cmap=plt.hot())
+fig.colorbar(img)
+plt.show()
+```
+
+
+
