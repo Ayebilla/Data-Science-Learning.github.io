@@ -164,3 +164,12 @@ def dataframe():
     df.insert(0,'user',fkeyList)
     return df
 ```
+Here is how the first 5 entries of my data fram looks like.
+user | economy | social | culture | health
+---  | ------  | ------ | ------- | ------
+sambahflex |0    | 0      |     1   |  0
+CoOwusu           0          0      0
+AshesiIX | 0  |     0   |       0   |   0 
+askrashida | 0    |  0    |      0   |   0
+Ghanasoccernet | 0 |  0   |      0   |   0
+TransformingGh | 0 |   0   |     29    | 0 
