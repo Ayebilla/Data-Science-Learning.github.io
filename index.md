@@ -174,7 +174,7 @@ askrashida | 0 |   0    |    0    |    0
 Ghanasoccernet| 0| 0    |    0    |    0
 TransformingGh| 0| 0    |    29   |    0 
 
-Good job! if you have your data frame ready. Now let's do the last bit of it which is using the K-means to make a cluster of our users. I know you are exhausted already so I will not bore you by explaining what K-means is. You can take a quick read about it [here](https://en.wikipedia.org/wiki/K-means_clustering)
+Good job! if you have your data frame ready. Now let's do the last bit of it which is using K-means to make a cluster of our users. I know you are exhausted already so I will not bore you by explaining what K-means is. You can take a quick read about it [here](https://en.wikipedia.org/wiki/K-means_clustering)
 
 ```
 X = dff.iloc[:,1:5]
@@ -203,7 +203,7 @@ Here is how my cluster looks like. Go ahead and play with varying K, setting the
 
 ## Conclusion
 Thank you for making it this far! We have come to end of this tutorial and this is what I have to say;
-This was meant present an easy way for beginners to engage and understand how to identify twitter communities and I hope you enjoyed it?  
+This was meant to be an easy way for beginners to engage and understand how to identify twitter communities and I hope you enjoyed it?  
 
 Before you go, just read the limitations so that you may produce much better results.
 This project has limitations as you might have noticed. Firstly, the data set(1038 users) was too small to make meaningful clusters as we want. You can see the effect of that on the cluster graph. Also, notice that I used just a few hashtags which were not chosen based on any principle either than my own discretion to represent each feature. This makes the data prone to biases and not a good representation of the features. I think we can improve this by using more hashtags and asking experts and our friends to help group them into each feature for us.
