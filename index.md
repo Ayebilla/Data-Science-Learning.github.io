@@ -167,12 +167,12 @@ def dataframe():
 Here is how the first 5 entries of my data fram looks like.
 user | economy | social | culture | health
 ---  | ------  | ------ | ------- | ------
-sambahflex |0    | 0      |     1   |  0
-CoOwusu           0          0      0
-AshesiIX | 0  |     0   |       0   |   0 
-askrashida | 0    |  0    |      0   |   0
-Ghanasoccernet | 0 |  0   |      0   |   0
-TransformingGh | 0 |   0   |     29    | 0 
+sambahflex | 0 |   0    |    1    |    0
+CoOwusu  |   0 |   0    |    0    |    0
+AshesiIX |   0 |   0    |    0    |    0 
+askrashida | 0 |   0    |    0    |    0
+Ghanasoccernet| 0| 0    |    0    |    0
+TransformingGh| 0| 0    |    29   |    0 
 
 Good job! if you have your data frame ready. Now let's do the last bit of it which is using the K-means to make a cluster of our users. I know you are exhausted already so I will not bore you by explaining what K-means is. You can take a quick read about it [here](https://en.wikipedia.org/wiki/K-means_clustering)
 
