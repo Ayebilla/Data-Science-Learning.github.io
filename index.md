@@ -107,3 +107,60 @@ Now go through all tweets of a each user and count the occurrences of these hash
 ```
 stats = {'economy': 0, 'social':0, 'culture': 0,'health':0}
 ```
+The entire function for getting hashtags from a user's tweets is shown next
+
+```
+def getHashtags(tweet):
+    entities = tweet.get('entities',{})
+    hashtags = entities.get('hashtags',[])
+    return [tag['text'].lower() for tag in hashtags]
+
+def tags(user='RuwaOntheGo', dictTags = {}): #dicTags is a dictionary containing the keywords as keys and the hashtags of interest as a list of values
+    stats = {'economy': 0, 'social':0, 'culture': 0,'health':0} #initialize all feature count to zeros.
+    labels = ['economy','social','culture','health']  
+    fname = "user_timeline_{}.jsonl".format(user)
+    with open(fname, 'r') as f:
+        hashtags = [] #Counter()
+        for line in f:
+            tweet = json.loads(line)
+            tags_in_tweet = getHashtags(tweet)
+            if len(tags_in_tweet)>0:
+                hashtags.append(tags_in_tweet)
+        for tag in hashtags:
+            for tt in tag:
+                for key in labels:
+                    if tt in dictTags[key]:
+                        stats[key] =stats[key] + 1 
+    #print(hashtags)
+    return {user: list(stats.values())}
+                    
+```
+Just like the other functions, call this function many times to get the hashtag count for each user. 
+
+## Preparing a pandas data frame for your data
+If you called the tags() function above many times, storing the result in one big list, you will end up with a list containing dictionaries whose values are a list! Employ your basic python skills here to manipulate it into a form that you can simply convert it to a pandas data frame. I used these functions below to manipulate mine. Go ahead and do it your way!
+```
+#prepare a data frame
+def get_dictkeys(listdic):
+    return list(listdic.keys())
+
+#returns the values of the dictionary as a list
+def get_dictvals(listdic):
+     return list(listdic.values())
+
+def dataframe():
+    keysList = []
+    valList = []
+    data = []
+    fkeyList = []
+    for item in uList:
+        keysList.append(get_dictkeys(item))
+        valList.append(get_dictvals(item))
+    for it in valList:
+        data.append(it[0])
+    for n in keysList:
+        fkeyList.append(n[0])  
+    df = pd.DataFrame(data, columns = ["economy", "social","culture","health"])
+    df.insert(0,'user',fkeyList)
+    return df
+```
