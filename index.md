@@ -199,6 +199,7 @@ img = ax.scatter(x,y,z, c=c, cmap=plt.hot())
 fig.colorbar(img)
 plt.show()
 ```
-
+Here is how my cluster looks like. Go ahead and play with varying K, setting the axes and see how it changes. 
+<img src="https://user-images.githubusercontent.com/40761614/88488565-94a62700-cf7d-11ea-9c98-d9af65184678.png" alt="cluster">
 
 
