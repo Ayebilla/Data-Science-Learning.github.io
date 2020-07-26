@@ -85,4 +85,25 @@ def getUserTweets(user='RuwaOntheGo'):
             for status in page:
                 f.write(json.dumps(status._json) + "\n")
 ```
+## Getting hashtags from the tweets
+Now that you have the tweets of all the users you considered, next thing is to search for hashtags of interest in each tweet. For my case, I needed to put these users into clusters based on their interest in **economy, social, culture and health** issues of my country. To do this, I went through twitter and harvested some popular hashtags used by people in my country on twitter. By reviewing people's post with that hashtag and my own knowledge the issue, each hashtag was place in one of the four categories. In all, I used 9 hashtags for each category. See below.
 
+```
+htags = {'economy': ['yearofreturn','ghanaianbusiness','localbusiness',
+                     'ghanabeyondaid','2020budgetreview',
+                     'sdgs','beyondthelockdown','farmersdayghana'], 
+         'social':['ghtourism','ghweddings','imwithher','tadigirls',
+                   'justiceforgeorgefloyd','girlchildeducation',
+                   'lutterodt','hushpuppi','ugandavsghana'], 
+         'culture': ['independenceday','ghanamostbeautiful','ghana',
+                     'saynotocorruption', 'goodmorningremix','gmb2020',
+                     'nsmq','registertovote2020', 'mokobe'],
+         'health':['stayhome','socialdistancing','spreadcalmnotfear',
+                   'ghanacovid19','wearyourmask','covid19','ghhealth',
+                   'globalhealth','staysafe']}
+
+```
+Now go through all tweets of a each user and count the occurrences of these hashtags, updaing the count of each category accordingly. I used a python dictionary for this.
+```
+stats = {'economy': 0, 'social':0, 'culture': 0,'health':0}
+```
