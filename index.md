@@ -74,9 +74,9 @@ Go ahead and get as many user names as you want for this exercise if you have a 
 _Hint: segment your input into different list of smaller sizes say, 20 users to avoid delays that may lead to a timed out error. Use different sets to hold the output and you can then unite the sets after you are done to avoid duplicates_
 
 ## Downloading the tweets of all the users.
-Now that we have the user names of the users we want, we will go ahead and download their tweets. Tweets will be download as json objects and save in a json file. Eeach line in this file represent a tweet object. Remember this as we will be needing it to be able to get hashtags from the tweets. You can visit the Twitter developers site to learn more about the [structure of a tweet](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json#:~:text=Each%20Tweet%20has%20an%20author,most%20often%20an%20account%20bio.).
+Now that we have the user names of the users we want, we will go ahead and download their tweets. Tweets will be download as json objects and save in a json file. Eeach line in this file represent a tweet object. Remember this as we will be needing it to be able to get hashtags from the tweets. You can visit the Twitter Developer site to learn more about the [structure of a tweet](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json#:~:text=Each%20Tweet%20has%20an%20author,most%20often%20an%20account%20bio.).
 
-This function will help us download the tweets of a user as a json file. After you run it, check in your working directory (if you did not specify any) and you will see the json file there! Just like we did with the userFriends function, you will call this code in a loop and pass all the users you want to download their tweets.
+This function will help us download the tweets of a user as a json file. After you run it, check in your working directory (if you did not specify any) and you will see the json file there! Just like we did with the userFriends function, you will call this function in a loop and pass all the users you want to download their tweets.
 ```
 def getUserTweets(user='RuwaOntheGo'):
     client = TwitterClient()
@@ -87,7 +87,7 @@ def getUserTweets(user='RuwaOntheGo'):
                 f.write(json.dumps(status._json) + "\n")
 ```
 ## Getting hashtags from the tweets
-Now that you have the tweets of all the users you considered, next thing is to search for hashtags of interest in each tweet. For my case, I needed to put these users into clusters based on their interest in **economy, social, culture and health** issues of my country. To do this, I went through twitter and harvested some popular hashtags used by people in my country on twitter. By reviewing people's post with that hashtag and my own knowledge the issue, each hashtag was place in one of the four categories. In all, I used 9 hashtags for each category. See below.
+Now that you have the tweets of all the users you considered, next thing is to search for hashtags of interest in each tweet. For my case, I needed to put these users into clusters based on their interest in **economy, social, culture and health** issues of my country. To do this, I went through twitter and harvested some popular hashtags used by people in my country on twitter. By reviewing people's post with those hashtags and my own knowledge the issues, each hashtag was place in one of the four categories. In all, I used 9 hashtags for each category. See below.
 
 ```
 htags = {'economy': ['yearofreturn','ghanaianbusiness','localbusiness',
