@@ -75,12 +75,13 @@ _Hint: segment your input into different list of smaller sizes say, 20 users to 
 ## Downloading the tweets of all the users.
 Now that we have the user names of the users we want, we will go ahead and download their tweets. Tweets will be download as json objects and save in a json file. Eeach line in this file represent a tweet object. Remember this as we will be needing it to be able to get hashtags from the tweets. You can visit the Twitter developers site to learn more about the [structure of a tweet](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json#:~:text=Each%20Tweet%20has%20an%20author,most%20often%20an%20account%20bio.).
 This function will help us download the tweets of a user as a json file
-
-```def getUserTweets(user='AvokaAyebilla'):
+```
+def getUserTweets(user='AvokaAyebilla'):
     client = TwitterClient()
     fname = "user_timeline_{}.jsonl".format(user)
     with open(fname, 'w') as f:
         for page in Cursor(client.user_timeline, screen_name=user,count=200).pages(2):
             for status in page:
                 f.write(json.dumps(status._json) + "\n")
- ```
+```
+
